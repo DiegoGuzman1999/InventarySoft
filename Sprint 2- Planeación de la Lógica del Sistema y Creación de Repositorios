@@ -1,0 +1,40 @@
+Objetivo del Sprint 2
+Establecer la estructura inicial del proyecto InventaSoft mediante la creación de los repositorios en GitHub y definir la lógica del sistema y el plan de implementación que se desarrollará en los siguientes sprints.
+
+🧩 ¿Qué se hará en el Sprint 2? (Actividades planificadas)
+
+Creación y configuración de los cuatro repositorios del proyecto:
+
+InventaSoft (repositorio principal y documentación).
+
+InventaSoft-Portal (frontend).
+
+InventaSoft-API (backend).
+
+InventaSoft-DB (modelo de datos).
+
+Definición de la arquitectura general del sistema y responsabilidades de cada componente.
+
+Levantamiento y documentación de la lógica del negocio (cómo funcionarán ventas, inventarios y procesos administrativos).
+
+Identificación de casos de uso y flujos principales del sistema.
+
+Diseño preliminar del modelo de datos lógico (entidades y relaciones).
+
+Definición del alcance funcional del MVP (primera versión del sistema).
+
+Elaboración del backlog inicial de funcionalidades para los siguientes sprints.
+
+Creación de README.md básicos en cada repositorio con el propósito del componente.
+
+🎯 ¿A qué se espera llegar al final del Sprint 2? (Resultados esperados)
+
+Repositorios creados y organizados en GitHub.
+
+Arquitectura del sistema claramente definida a nivel conceptual.
+
+Lógica del negocio documentada (qué hará el sistema y cómo se espera que funcione).
+
+Modelo de datos preliminar definido.
+
+Backlog priorizado para iniciar el desarrollo en el siguiente sprint.
