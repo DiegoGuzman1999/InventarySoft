@@ -1,0 +1,19 @@
+## 📂 Repositorios del Proyecto InventarySoft
+
+El proyecto InventarySoft se organiza en los siguientes repositorios, cada uno con una responsabilidad específica dentro de la arquitectura del sistema:
+
+- **InventarySoft-Portal (Frontend):**  
+  Interfaz web del sistema para la gestión de ventas, inventarios y procesos administrativos.  
+  👉 https://github.com/DiegoGuzman1999/InventarySoft-portal
+
+- **InventarySoft-App (Repositorio Principal):**  
+  Repositorio central del proyecto. Contiene la documentación general, lineamientos de arquitectura, planificación de sprints y enlaces a los demás componentes del sistema.  
+  👉 https://github.com/DiegoGuzman1999/InventarySoft-App
+
+- **InventarySoft-Api (Backend):**  
+  Servicios y lógica de negocio del sistema, expuestos mediante APIs para la comunicación con el frontend.  
+  👉 https://github.com/DiegoGuzman1999/InventarySoft-Api
+
+- **InventarySoft-DB (Base de Datos):**  
+  Modelo de datos, scripts de base de datos, migraciones y documentación de la capa de persistencia.  
+  👉 https://github.com/DiegoGuzman1999/InventarySoft-DB
