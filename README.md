@@ -29,8 +29,8 @@ El sistema está organizado en múltiples repositorios, cada uno con una respons
 
 ---
 
-## 📂 Organización del Repositorio Principal
 
-Este repositorio contiene la documentación y gestión del proyecto:
+## 📌 Notas
 
+Este repositorio actúa como punto central de documentación, organización y referencia para todos los componentes del sistema InventorySoft.
 
