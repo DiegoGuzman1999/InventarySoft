@@ -1,7 +1,7 @@
 # Sprint History – InventarySoft
 
 Metodología: Scrum  
-Duración del Sprint: 2 semanas  
+Duración del Sprint: 1 semanas  
 Gestión formal en Jira desde Sprint 3  
 
 ---
