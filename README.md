@@ -28,8 +28,15 @@ El sistema está organizado en múltiples repositorios, cada uno con una respons
 | Repositorio Principal | Gestión del proyecto y documentación | https://github.com/DiegoGuzman1999/InventarySoft |
 
 ---
+## Gestión Ágil del Proyecto
+
+El seguimiento de actividades, planificación de Sprints y control del backlog se realiza mediante la herramienta Jira.
+
+Acceso al tablero oficial del proyecto:
+[InventarySoft – SCRUM Board](https://inventarysoft.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
 
 
+---
 ## 📌 Notas
 
 Este repositorio actúa como punto central de documentación, organización y referencia para todos los componentes del sistema InventorySoft.
