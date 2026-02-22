@@ -21,43 +21,46 @@ La separación en repositorios independientes permite equipos paralelos, desplie
 A continuación se presenta un diagrama de arquitectura en formato ASCII que ilustra la disposición de los componentes y sus relaciones.
 
 ```
-                                    ┌─────────────────────────────────────────────────────────┐
-                                    │                    CAPA DE CLIENTES                      │
-                                    └─────────────────────────────────────────────────────────┘
-                                                              │
-         ┌──────────────────────────────────┐    ┌───────────┴───────────┐
-         │  PORTAL WEB ADMINISTRATIVO        │    │  APLICACIÓN CLIENTE    │
-         │  (Frontend — Navegador)           │    │  (Cliente final)       │
-         │  • Interfaz de administración     │    │  • Consultas / operaciones│
-         │  • Gestión de inventario          │    │  • UI simplificada     │
-         │  • Reportes y configuración       │    │  • Consumo de API      │
-         └────────────────┬─────────────────┘    └───────────┬───────────┘
-                          │                                   │
-                          │         HTTP/HTTPS + JSON         │
-                          └─────────────────┬─────────────────┘
-                                            │
-                                    ┌───────▼───────┐
-                                    │   INTERNET    │
-                                    │   / RED       │
-                                    └───────┬───────┘
-                                            │
-                                    ┌───────▼───────────────────────────────────────────────────┐
-                                    │                    CAPA DE SERVIDOR                        │
-                                    └───────────────────────────────────────────────────────────┘
-                                            │
-         ┌──────────────────────────────────▼──────────────────────────────────┐
-         │                        BACKEND API (REST)                            │
-         │  • Autenticación y autorización  • Lógica de negocio                  │
-         │  • Validación de datos           • Orquestación de servicios         │
-         │  • Exposición de recursos REST  • Persistencia y consultas           │
-         └──────────────────────────────────┬──────────────────────────────────┘
-                                            │
-                                    ┌───────▼───────┐
-         ┌──────────────────────────│  BASE DE      │
-         │                          │  DATOS        │
-         │  • Persistencia          │  • Entidades  │
-         │  • Integridad referencial │  • Transacciones
-         └──────────────────────────┴──────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                       CAPA DE CLIENTES                       │
+└──────────────────────────────────────────────────────────────┘
+            │                                   │
+┌───────────▼───────────┐           ┌──────────▼───────────┐
+│ PORTAL WEB ADMIN      │           │ APLICACIÓN CLIENTE   │
+│ (Frontend Web)        │           │ (Cliente Final)      │
+│ • Administración      │           │ • Consultas          │
+│ • Gestión inventario  │           │ • Operaciones básicas│
+│ • Reportes            │           │ • UI simplificada    │
+│ • Configuración       │           │ • Consumo de API     │
+└───────────┬───────────┘           └──────────┬───────────┘
+            │                                  │
+            └────────── HTTP / HTTPS (JSON) ────┘
+                            │
+                    ┌───────▼───────┐
+                    │   RED /       │
+                    │   INTERNET    │
+                    └───────┬───────┘
+                            │
+┌──────────────────────────────────────────────────────────────┐
+│                       CAPA DE SERVIDOR                       │
+└──────────────────────────────────────────────────────────────┘
+                            │
+┌───────────────────────────▼──────────────────────────────────┐
+│                     BACKEND API (REST)                       │
+│ • Autenticación y autorización                               │
+│ • Lógica de negocio                                          │
+│ • Validación de datos                                        │
+│ • Exposición de servicios REST                               │
+│ • Orquestación de procesos                                   │
+└───────────────────────────┬──────────────────────────────────┘
+                            │
+┌───────────────────────────▼──────────────────────────────────┐
+│                        BASE DE DATOS                         │
+│ • Persistencia de datos                                      │
+│ • Integridad referencial                                     │
+│ • Transacciones                                              │
+│ • Entidades del sistema                                      │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ---
