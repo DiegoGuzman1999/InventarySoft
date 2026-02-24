@@ -33,7 +33,7 @@ El sistema está organizado en múltiples repositorios, cada uno con una respons
 El seguimiento de actividades, planificación de Sprints y control del backlog se realiza mediante la herramienta Jira.
 
 Acceso al tablero oficial del proyecto:
-[InventarySoft – SCRUM Board](https://inventarysoft.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+[InventarySoft – SCRUM Board](https://inventarysoft.atlassian.net/jira/software/projects/IDT2/boards/34/backlog)
 
 
 ---
