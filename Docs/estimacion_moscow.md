@@ -90,7 +90,7 @@ Funcionalidades muy valiosas que mejoran significativamente la operación, pero 
 
 | ID   | Requerimiento                                                                                           | Descripción breve                                                                                     |
 |------|---------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| S-01 | Gestión avanzada de roles y permisos                                                                   | Definir diferentes roles (ej. administrador, supervisor, vendedor) con permisos más granulares.       |
+| S-01 | Gestión avanzada de roles y permisos                                                                   | Definir diferentes roles (ej. administrador, vendedor) con permisos más granulares.                        |
 | S-02 | Reportes detallados de inventario (stock mínimo, productos en alerta, rotación)                       | Reportes específicos para la toma de decisiones de compra y reposición.                               |
 | S-03 | Reporte de ventas por cliente                                                                          | Visualizar el historial de compras y volumen por cliente.                                             |
 | S-04 | Reporte de ventas por producto                                                                         | Identificar productos más vendidos y aquellos con baja rotación.                                      |
@@ -110,11 +110,8 @@ Funcionalidades que aumentan la usabilidad, la eficiencia o el valor añadido de
 | C-01 | Panel de control (dashboard) con indicadores clave (KPI)                                               | Visualizar métricas de ventas, inventario y alertas en una sola vista.                                |
 | C-02 | Notificaciones visuales de stock bajo                                                                  | Alertas en pantalla cuando un producto llegue a su nivel mínimo definido.                             |
 | C-03 | Gestión de categorías y subcategorías de productos más detallada                                      | Organización jerárquica avanzada de productos.                                                         |
-| C-04 | Impresión y/o generación de comprobantes de venta en formato ticket/factura                            | Generar comprobantes formales para el cliente.                                                         |
-| C-05 | Soporte multimoneda básico (visualización de totales en otra moneda)                                  | Conversión referencial con tipo de cambio configurable.                                                |
-| C-06 | Autocompletado de campos frecuentes (búsqueda rápida de clientes, productos)                           | Mejora la velocidad de registro de ventas y operaciones.                                               |
-| C-07 | Personalización básica de la interfaz (logo institucional, colores)                                   | Adaptar la apariencia del sistema a la identidad de la organización/académica.                        |
-| C-08 | Ayuda en línea o sección de preguntas frecuentes                                                       | Guía básica de uso para usuarios finales.                                                              |
+| C-04 | Impresión y/o generación de comprobantes de venta en formato ticket/factura                            | Generar comprobantes formales para el cliente.                                                         |                                                
+| C-05 | Autocompletado de campos frecuentes (búsqueda rápida de clientes, productos)                           | Mejora la velocidad de registro de ventas y operaciones.                                               |                                                                                                
 
 ---
 
