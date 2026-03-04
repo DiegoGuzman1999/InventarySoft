@@ -18,7 +18,7 @@ services:
     container_name: pgadmin-inventory
     restart: unless-stopped
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@inventarysoft.local
+      PGADMIN_DEFAULT_EMAIL: admin@inventarysoft.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
