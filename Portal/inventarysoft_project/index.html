@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrative Control System – Sales & Inventory</title>
+  <link rel="stylesheet" href="asset/css/estilos.css">
+  <script>
+    function openTab(evt, tabName, skipHash) {
+      var i, sections, buttons;
+      sections = document.querySelectorAll('section');
+      for (i = 0; i < sections.length; i++) {
+        sections[i].classList.remove('active');
+      }
+      buttons = document.querySelectorAll('nav[role="tablist"] button');
+      for (i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+        buttons[i].setAttribute('aria-selected', 'false');
+      }
+      var targetSection = document.getElementById(tabName);
+      if (targetSection) targetSection.classList.add('active');
+      if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
+        evt.currentTarget.setAttribute('aria-selected', 'true');
+      }
+      if (!skipHash) {
+        try { location.hash = tabName; } catch (e) {}
+      }
+    }
+    function openSubTab(elmnt, contentId) {
+      var i, contents, buttons;
+      contents = document.getElementsByClassName('subcontent');
+      for (i = 0; i < contents.length; i++) {
+        contents[i].classList.remove('active');
+      }
+      buttons = elmnt.parentElement.querySelectorAll('button');
+      for (i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+      }
+      document.getElementById(contentId).classList.add('active');
+      elmnt.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize tabs from hash
+      var initial = (location.hash || '').replace('#','') || 'presentation';
+      var initialBtn = document.querySelector("nav button[data-tab='"+initial+"']") || document.querySelector('nav button');
+      if (initialBtn) {
+        openTab({currentTarget: initialBtn}, initialBtn.getAttribute('data-tab') || 'presentation', true);
+      }
+
+      // Filter modules by search
+      var search = document.getElementById('moduleSearch');
+      if (search) {
+        var items = Array.prototype.slice.call(document.querySelectorAll('.modules-grid a.card'));
+        search.addEventListener('input', function(){
+          var q = (search.value || '').toLowerCase().trim();
+          items.forEach(function(el){
+            var text = el.textContent.toLowerCase();
+            el.style.display = text.indexOf(q) > -1 ? '' : 'none';
+          });
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+<header>
+  <h1>Administrative Control System Inventarysoft </h1>
+</header>
+
+<nav role="tablist" aria-label="Navegación de secciones">
+  <button role="tab" aria-controls="presentation" aria-selected="true" class="active" data-tab="presentation" onclick="openTab(event, 'presentation')">Presentación</button>
+  <button role="tab" aria-controls="diagrams" aria-selected="false" data-tab="diagrams" onclick="openTab(event, 'diagrams')">Diagramas</button>
+  <button role="tab" aria-controls="hu" aria-selected="false" data-tab="hu" onclick="openTab(event, 'hu')">Tablero HU</button>
+  <button role="tab" aria-controls="moscow" aria-selected="false" data-tab="moscow" onclick="openTab(event, 'moscow')">MoSCoW</button>
+  
+</nav>
+
+<div class="module-nav" aria-label="Módulos del sistema">
+  <a href="system_parameterization/system_parameterization.html" class="nav-link">System Parameterization</a>
+  <a href="security_management/security_management.html" class="nav-link">Security Management</a>
+  <a href="human_resources/human_resources.html" class="nav-link">Human Resources</a>
+  <a href="product_inventory_management/product_inventory_management.html" class="nav-link">Product & Inventory</a>
+  <a href="sales_operations/sales_operations.html" class="nav-link">Sales Operations</a>
+  <a href="customer_services/customer_services.html" class="nav-link">Customers & Services</a>
+  <a href="notifications/notifications.html" class="nav-link">Notifications</a>
+</div>
+
+<section id="presentation" class="active">
+  <div class="card" style="margin-top: 8px;">
+    <h2 style="margin-top:0">Presentación del Proyecto</h2>
+    <p>El sistema web de control administrativo de ventas e inventarios Inventarysoft permite la gestión integral de los procesos administrativos y comerciales de una organización. Abarca desde la configuración y parametrización del sistema, hasta el control de productos, inventarios, ventas y clientes, asegurando la correcta administración de la información operativa.
+        La plataforma está compuesta por módulos especializados de gestión de inventarios, ventas, clientes, seguridad y control de accesos, infraestructura del sistema, parametrización, reportes y notificaciones, los cuales operan de forma integrada para mejorar la eficiencia operativa, la trazabilidad de la información y el apoyo a la toma de decisiones.</p>
+    
+    <div class="searchbar">
+      <input id="moduleSearch" type="search" placeholder="Buscar módulo por nombre..." aria-label="Buscar módulo">
+    </div>
+    <div class="modules-grid">
+      <a href='system_parameterization/system_parameterization.html' class="card"> System Parameterization</a>
+      <a href='security_management/security_management.html'class="card"> Security Management</a>
+      <a href='human_resources/human_resources.html' class="card"> Human Resources</a>
+      <a href='product_inventory_management/product_inventory_management.html' class="card"> Product & Inventory Management</a>
+      <a href='sales_operations/sales_operations.html' class="card"> Sales Operations</a>
+      <a href='customer_services/customer_services.html' class="card"> Customer & Services</a>
+      <a href='notifications/notifications.html' class="card"> Notifications</a>
+    </div>
+  </div>
+</section>
+<section id="diagrams">
+  <h2>Diagramas</h2>
+  <div class="subtabs">
+    <button class='active' onclick="openSubTab(this,'diagram-content-0')">Package Diagram</button><button class='' onclick="openSubTab(this,'diagram-content-1')">Class Diagram</button><button class='' onclick="openSubTab(this,'diagram-content-2')">Sequence Diagram</button><button class='' onclick="openSubTab(this,'diagram-content-3')">Deployment Diagram</button><button class='' onclick="openSubTab(this,'diagram-content-4')">Use Case Diagram</button>
+  </div>
+  
+    <div id="diagram-content-0" class="subcontent active">
+      <h3>Package Diagram</h3>
+      <img src="asset/doc/proyecto/packeage/Packeage.png" alt="Package Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h4>PlantUML Source</h4>
+      <pre><code>@startuml
+title Inventarysoft – Package Diagram
+
+package &quot;Security Management&quot; {
+    class role
+    class permission
+    class role_permission
+    class system_module
+    class module_permission
+    class person
+    class user_account
+  }
+
+package &quot;System Parameterization&quot; {
+  class document_type
+  class product_category
+  class payment_method
+  class inventory_movement_type
+  class user_role
+  class system_status
+}
+
+package &quot;PSales Operations&quot; {
+  class sale
+  class sale_detail
+  class invoice
+  class payment
+}
+
+package &quot;Product & Inventory Management&quot&quot; {
+  class product
+  class inventory
+  class inventory_movement
+}
+
+package &quot;Customers &amp; Services&quot; {
+  class customer
+  class service
+  class customer_service
+}
+
+package &quot;Notifications&quot; {
+  class message_template
+  class notification
+  class alert_rule
+}
+
+package &quot;Flight Operations&quot; {
+  class flight
+  class crew_assignment
+  class ticket
+  class baggage
+}
+
+package &quot;Human Resources&quot; {
+  class employee
+  class position
+}
+
+@enduml
+</code></pre>
+    </div>
+    
+    <div id="diagram-content-1" class="subcontent ">
+      <h3>Class Diagram</h3>
+      <img src="asset/doc/proyecto/class/class.png" alt="Class Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h4>PlantUML Source</h4>
+      <pre><code>@startuml
+title Inventarysoft – Class Diagram (Vertical flow)
+
+' --- NIVEL 1: PARÁMETROS ---
+class document_type { +id }
+class product_category { +id }
+class payment_method { +id }
+class inventory_movement_type { +id }
+class user_role { +id }
+class system_status { +id }
+class position { +id }
+class message_template { +id }
+
+' --- NIVEL 2: ENTIDADES BASE ---
+class person {
+    +id
+    +document_type_id
+}
+
+class product {
+    +id
+    +product_category_id
+}
+
+class role {
+    +id
+    +user_role_id
+}
+
+class permission {
+    +id
+}
+
+' --- NIVEL 3: OPERATIVAS ---
+class employee {
+    +id
+    +person_id
+    +position_id
+}
+
+class user_account {
+    +id
+    +person_id
+    +role_id
+}
+
+class customer {
+    +id
+    +person_id
+}
+
+class role_permission {
+    +id
+    +role_id
+    +permission_id
+}
+
+class inventory {
+    +id
+    +product_id
+}
+
+' --- NIVEL 4: TRANSACCIONES ---
+class sale {
+    +id
+    +customer_id
+    +user_id
+    +payment_method_id
+}
+
+class inventory_movement {
+    +id
+    +inventory_id
+    +movement_type_id
+}
+
+' --- NIVEL 5: DETALLES Y NOTIFICACIONES ---
+class sale_detail {
+    +id
+    +sale_id
+    +product_id
+}
+
+class invoice {
+    +id
+    +sale_id
+}
+
+class payment {
+    +id
+    +sale_id
+}
+
+class notification {
+    +id
+    +person_id
+    +template_id
+    +sale_id
+}
+
+' ==========================================
+' RELACIONES
+' ==========================================
+
+document_type -> person
+product_category -> product
+user_role -> role
+position -> employee
+message_template -> notification
+payment_method -> sale
+inventory_movement_type -> inventory_movement
+
+person -> employee
+person -> user_account
+person -> customer
+
+role "1" *-- "*" role_permission
+permission "1" *-- "*" role_permission
+
+product "1" *-- "1" inventory
+inventory "1" *-- "*" inventory_movement
+
+customer -> sale
+user_account -> sale
+sale "1" *-- "*" sale_detail
+sale "1" -- "1" invoice
+sale "1" *-- "*" payment
+
+sale -> notification
+person -> notification
+
+@enduml
+</code></pre>
+    </div>
+    
+    <div id="diagram-content-2" class="subcontent ">
+      <h3>1.User Login</h3>
+      <img src="asset/doc/proyecto/secuence/UserLogin.png" alt="Sequence Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>2.Register Product</h3>
+      <img src="asset/doc/proyecto/secuence/RegistreProduct.png" alt="Sequence Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>3.Register Inventory Movement</h3>
+      <img src="asset/doc/proyecto/secuence/RegisterInventoryMovement.png" alt="Sequence Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>4.Process Sale </h3>
+      <img src="asset/doc/proyecto/secuence/ProcessSale.png" alt="Sequence Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>5.RegisterCustomer</h3>
+      <img src="asset/doc/proyecto/secuence/RegisterCustomer.png" alt="Sequence Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+    </div>
+    
+    <div id="diagram-content-3" class="subcontent ">
+      <h3>Deployment Diagram</h3>
+      <img src="asset/doc/proyecto/deploy/deployd.png" alt="Deployment Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h4>PlantUML Source</h4>
+      <pre><code>@startuml
+title Inventarysoft - Deployment Diagram
+
+node "Cloud Environment" {
+
+  node "CI/CD Pipeline" {
+    component "GitHub Repo\nBranches: develop, qa, main" as GitHub
+    component "Jenkins" as Jenkins
+    GitHub -> Jenkins : Webhook/Clone
+  }
+
+  node "Container Cluster" {
+
+    node "Frontend Container" {
+      component "Web App\nReact SPA" as Web
+    }
+
+    node "Backend Container" {
+      component "REST API\n(Node/Java/Python)" as API
+    }
+
+    node "Database Container" {
+      database "PostgreSQL\nInventarysoft_DB" as DB
+    }
+
+    Web -> API : REST/HTTPS
+    API -> DB : JDBC
+  }
+
+  Jenkins -> "Container Cluster" : Build & Deploy
+}
+
+@enduml
+</code></pre>
+    </div>
+    
+    <div id="diagram-content-4" class="subcontent ">
+      <h3>Use Case Diagram Security Management.</h3>
+      <img src="asset/doc/proyecto/use_case/UseCaseSecurityManagement.png" alt="Use Case Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>Use Case Diagram System Parameterization</h3>
+      <img src="asset/doc/proyecto/use_case/UseCaseSystemParameterization.png" alt="Use Case Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>Use Case Diagram Product & Inventory</h3>
+      <img src="asset/doc/proyecto/use_case/UseCaseProduct&Inventory.png" alt="Use Case Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>Use Case Diagram Sales Operation</h3>
+      <img src="asset/doc/proyecto/use_case/UseCaseSalesOperations.png" alt="Use Case Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>Use Case Diagram Customers & Services</h3>
+      <img src="asset/doc/proyecto/use_case/UseCaseCustomers&Services.png" alt="Use Case Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      <h3>Use Case Diagram Notifications</h3>
+      <img src="asset/doc/proyecto/use_case/UseCaseNotifications.png" alt="Use Case Diagram" style="max-width:100%;height:auto; border:1px solid #e5e7eb;">
+      
+    </div>
+    
+</section>
+<section id="hu">
+  <h2>Tablero de Historias de Usuario (HU)</h2>
+  
+  <details>
+    <summary>Security Management</summary>
+    <div>
+      <ul>
+        <li>Como Administrador quiero gestionar roles y permisos de usuarios para controlar el acceso al sistema.</li>
+        <li>Como Administrador quiero registrar usuarios asociados a personas y roles para permitir el inicio de sesión.</li>
+        <li>Como Usuario quiero iniciar sesión en el sistema para acceder a las funcionalidades según mi rol.</li>
+      </ul>
+    </div>
+  </details>
+  
+  <details>
+    <summary>Human Resources</summary>
+    <div>
+      <ul>
+        <li>Como Administrador quiero registrar empleados con sus datos personales y cargos para gestionar el staff.</li>
+        <li>Como Administrador quiero consultar información de empleados para asignar responsabilidades eficientemente.</li>
+      </ul>
+    </div>
+  </details>
+  
+  <details>
+    <summary>System Parameterization</summary>
+    <div>
+      <ul>
+        <li>Como Administrador quiero configurar tipos de documentos para capturar correctamente la identidad de las personas.</li>
+        <li>Como Administrador quiero definir categorías de productos para organizar el catálogo de inventario.</li>
+        <li>Como Administrador quiero gestionar métodos de pago para ofrecer diferentes opciones de cobro en las ventas.</li>
+        <li>Como Administrador quiero definir tipos de movimientos de inventario para clasificar entradas y salidas.</li>
+      </ul>
+    </div>
+  </details>
+  
+  <details>
+    <summary>Product & Inventory</summary>
+    <div>
+      <ul>
+        <li>Como Administrador quiero registrar productos con sus precios y stock inicial para controlar la oferta.</li>
+        <li>Como Empleado quiero registrar movimientos de inventario (entradas/salidas) para mantener el stock actualizado.</li>
+        <li>Como Usuario quiero consultar la disponibilidad de productos en tiempo real para informar a los clientes.</li>
+      </ul>
+    </div>
+  </details>
+  
+  <details>
+    <summary>Sales Operations</summary>
+    <div>
+      <ul>
+        <li>Como Empleado quiero procesar ventas seleccionando productos y cantidades para registrar los ingresos.</li>
+        <li>Como Sistema quiero calcular automáticamente totales e impuestos para evitar errores humanos.</li>
+        <li>Como Empleado quiero generar facturas de venta para entregar un comprobante legal al cliente.</li>
+        <li>Como Empleado quiero registrar pagos asociados a las ventas para cerrar el ciclo comercial.</li>
+      </ul>
+    </div>
+  </details>
+  
+  <details>
+    <summary>Customers & Services</summary>
+    <div>
+      <ul>
+        <li>Como Empleado quiero registrar clientes en el sistema para asociar sus compras y fidelizarlos.</li>
+        <li>Como Cliente quiero recibir mi factura por correo electrónico (opcional) para tener un respaldo digital.</li>
+      </ul>
+    </div>
+  </details>
+  
+  <details>
+    <summary>Notifications</summary>
+    <div>
+      <ul>
+        <li>Como Administrador quiero crear plantillas de mensajes para notificar eventos de manera uniforme.</li>
+        <li>Como Sistema quiero enviar alertas de stock bajo para informar oportunamente la necesidad de reabastecimiento.</li>
+        <li>Como Sistema quiero enviar notificaciones de confirmación de pago para mantener informados a los clientes.</li>
+      </ul>
+    </div>
+  </details>
+    
+</section>
+<section id="moscow">
+  <h2>Priorización MoSCoW</h2>
+  <h3>Must</h3>
+  <ul>
+    <li>Como Usuario quiero iniciar sesión con usuario y contraseña para acceder de forma segura al sistema.</li>
+    <li>Como Administrador quiero definir roles básicos (administrador y vendedor) para controlar el acceso a las funcionalidades del sistema</li>
+    <li>Como Administrador quiero validar que los formularios críticos tengan datos obligatorios para evitar registros incompletos o erróneos.</li>
+    <li>Como Administrador quiero registrar productos con código, nombre, categoría, precio, stock y estado para administrar el inventario.</li>
+    <li>Como Administrador quiero editar y eliminar productos para mantener la información actualizada.</li>
+    <li>Como Administrador quiero consultar las existencias de productos en tiempo casi real para conocer el stock disponible y detectar alertas.</li>
+    <li>Como Administrador quiero registrar compras o ingresos de mercancía para incrementar el inventario</li>
+    <li>Como Sistema quiero actualizar automáticamente el inventario al registrar una venta para mantener el stock correcto.</li>
+    <li>Como Vendedor quiero registrar ventas asociando productos, cantidades y precios para generar el total de la venta.</li>
+    <li>Como Coordinador quiero asignar tripulación a un vuelo para garantizar que el vuelo esté atendido.</li>
+    <li>Como Vendedor quiero que cada venta quede registrada con fecha y usuario vendedor para mantener el control administrativo.</li>
+    <li>Como Administrador quiero generar reportes básicos de ventas por rango de fechas para analizar los ingresos del negocio.</li>
+    <li>Como Administrador quiero registrar clientes con datos básicos para asociarlos a las ventas cuando sea necesario.</li>
+    <li>Como Administrador quiero registrar proveedores con información básica para controlar el origen de los productos.</li>
+    
+  </ul>
+  <h3>Should</h3><ul>
+    <li>Como Administrador quiero configurar permisos más específicos para el rol vendedor para controlar mejor el acceso a ciertas funcionalidades.</li>
+    <li>Como Administrador quiero restringir acciones sensibles como eliminación de registros para mantener la seguridad del sistema.</li>
+    <li>Como Administrador quiero generar reportes de productos con stock mínimo para planificar reposiciones oportunamente.</li>
+    <li>Como Administrador quiero analizar la rotación de productos para mejorar la gestión de compras.</li>
+    <li>Como Administrador quiero consultar el historial de ventas por cliente para analizar el comportamiento comercial.</li>
+    <li>Como Administrador quiero visualizar ventas por producto para identificar los artículos más vendidos y los de baja rotación.</li>
+    <li>Como Administrador quiero realizar ajustes manuales de inventario en caso de pérdida o daño para reflejar el stock real.</li>
+    <li>Como Administrador quiero consultar una bitácora de actividades para supervisar las acciones realizadas en el sistema.</li>
+    <li>Como Sistema quiero registrar automáticamente operaciones críticas para garantizar trazabilidad</li>
+    <li>Como Vendedor quiero aplicar filtros avanzados en el catálogo de productos para encontrar información rápidamente.</li>
+    <li>Como Administrador quiero exportar reportes en formato PDF o Excel para compartir información o conservar respaldo externo.</li>
+  </ul><h3>Could</h3>
+    <ul><li>Como Administrador quiero visualizar un panel de control con indicadores clave de ventas e inventario para tener una visión general del estado del negocio.</li>
+    <li>Como Administrador quiero ver alertas e información resumida en una sola vista para facilitar la toma de decisiones.</li>
+    <li>Como Administrador quiero recibir notificaciones visuales cuando un producto llegue a su nivel mínimo para actuar oportunamente</li>
+    <li>Como Vendedor quiero visualizar alertas de stock bajo al momento de registrar una venta para evitar vender productos agotados.</li>
+    <li>Como Administrador quiero organizar productos en categorías y subcategorías para mejorar la estructura del catálogo.</li>
+    <li>Como Vendedor quiero generar comprobantes de venta en formato ticket o factura para entregar un soporte formal de la transacción.</li>
+    <li>Como Administrador quiero autocompletado en búsquedas para mejorar la eficiencia operativa.</li>
+
+  </ul><h3>Wont</h3><ul></ul>
+</section>
+
+</body>
+</html>
