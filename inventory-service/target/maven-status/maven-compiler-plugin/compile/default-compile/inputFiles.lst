@@ -1,0 +1,12 @@
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\InventoryServiceApplication.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\product\api\dto\ProductCreateRequest.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\product\api\dto\ProductResponse.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\product\api\dto\ProductUpdateRequest.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\product\api\ProductController.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\product\domain\Product.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\product\repo\ProductRepository.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\product\service\ProductService.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\shared\api\ErrorResponse.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\shared\api\GlobalExceptionHandler.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\shared\exception\ConflictException.java
+C:\Users\pc\Desktop\Proyecto\InventarySoft\inventory-service\src\main\java\com\inventarysoft\inventoryservice\shared\exception\NotFoundException.java

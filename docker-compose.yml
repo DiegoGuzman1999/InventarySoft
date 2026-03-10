@@ -1,0 +1,45 @@
+# InventarySoft - Entorno oficial
+# Proyecto: inventarysoft-oficial
+# Uso: desde esta carpeta ejecutar: docker compose up -d
+
+name: inventarysoft-oficial
+
+services:
+  db-inventory:
+    image: postgres:15
+    container_name: db-inventory
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: inventarysoft_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata_inventarysoft:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d inventarysoft_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin-inventory:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin-inventory
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@inventarysoft.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_REPLACE_SERVERS_ON_STARTUP: "True"
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data_inventarysoft:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+    depends_on:
+      db-inventory:
+        condition: service_healthy
+
+volumes:
+  pgdata_inventarysoft:
+  pgadmin_data_inventarysoft:
