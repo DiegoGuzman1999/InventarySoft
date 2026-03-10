@@ -1,45 +1,51 @@
 @REM ----------------------------------------------------------------------------
-@REM Maven Wrapper startup batch script, for Windows
+@REM Licensed to the Apache Software Foundation (ASF) under one
+@REM or more contributor license agreements. See the NOTICE file
+@REM distributed with this work for additional information
+@REM regarding copyright ownership. The ASF licenses this file
+@REM to you under the Apache License, Version 2.0 (the "License");
+@REM you may not use this file except in compliance with the License.
+@REM You may obtain a copy of the License at
+@REM
+@REM      https://www.apache.org/licenses/LICENSE-2.0
+@REM
+@REM Unless required by applicable law or agreed to in writing, software
+@REM distributed under the License is distributed on an "AS IS" BASIS,
+@REM WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@REM See the License for the specific language governing permissions and
+@REM limitations under the License.
 @REM ----------------------------------------------------------------------------
-@echo off
-setlocal
 
-set "MVNW_REPOURL="
-set "MVNW_VERBOSE=false"
+@REM ----------------------------------------------------------------------------
+@REM Apache Maven Wrapper startup batch script, version 3.3.2
+@REM ----------------------------------------------------------------------------
 
-set "BASEDIR=%~dp0"
-if "%BASEDIR:~-1%"=="\" set "BASEDIR=%BASEDIR:~0,-1%"
+@IF "%__MVNW_ARG0_NAME__%"=="" (SET __MVNW_ARG0_NAME__=%~nx0)
+@SET BASE_DIR=%~dp0
+@SET "WRAPPER_JAR=%BASE_DIR%.mvn\wrapper\maven-wrapper.jar"
+@REM BASE_DIR has trailing backslash; remove for multiModuleProjectDirectory (Maven 3.9.x)
+@SET "PROJECT_DIR=%BASE_DIR%"
+@SET PROJECT_DIR=%PROJECT_DIR:~0,-1%
 
-set "WRAPPER_JAR=%BASEDIR%\.mvn\wrapper\maven-wrapper.jar"
-set "WRAPPER_PROPERTIES=%BASEDIR%\.mvn\wrapper\maven-wrapper.properties"
-
-if exist "%WRAPPER_JAR%" goto run
-
-if not exist "%WRAPPER_PROPERTIES%" (
-  echo [ERROR] Maven Wrapper properties not found: "%WRAPPER_PROPERTIES%"
-  exit /b 1
+@IF NOT EXIST "%WRAPPER_JAR%" (
+  @ECHO Downloading Maven Wrapper jar...
+  @IF NOT EXIST "%BASE_DIR%.mvn\wrapper\MavenWrapperDownloader.java" (
+    @ECHO Error: Missing MavenWrapperDownloader.java
+    @EXIT /B 1
+  )
+  @pushd "%BASE_DIR%"
+  javac ".mvn\wrapper\MavenWrapperDownloader.java"
+  @IF ERRORLEVEL 1 (
+    @popd
+    @EXIT /B 1
+  )
+  java -cp ".mvn\wrapper" MavenWrapperDownloader "%BASE_DIR%"
+  @popd
 )
 
-for /f "usebackq delims=" %%A in (`powershell -NoProfile -Command "$line = (Select-String -Path '%WRAPPER_PROPERTIES%' -Pattern '^wrapperUrl=' | Select-Object -First 1).Line; if ($null -ne $line) { $line.Substring(11) }"` ) do set "WRAPPER_URL=%%A"
-
-if "%WRAPPER_URL%"=="" (
-  echo [ERROR] wrapperUrl not found in "%WRAPPER_PROPERTIES%"
-  exit /b 1
+@REM Pass multiModuleProjectDirectory to JVM so wrapper/Maven 3.9.x can use it
+@IF DEFINED JAVA_HOME (
+  "%JAVA_HOME%\bin\java" -Dmaven.multiModuleProjectDirectory="%PROJECT_DIR%" -jar "%WRAPPER_JAR%" %*
+) ELSE (
+  java -Dmaven.multiModuleProjectDirectory="%PROJECT_DIR%" -jar "%WRAPPER_JAR%" %*
 )
-
-echo Downloading Maven Wrapper jar...
-powershell -NoProfile -Command ^
-  "$ProgressPreference='SilentlyContinue';" ^
-  "New-Item -ItemType Directory -Force -Path '%BASEDIR%\\.mvn\\wrapper' | Out-Null;" ^
-  "Invoke-WebRequest -UseBasicParsing -Uri '%WRAPPER_URL%' -OutFile '%WRAPPER_JAR%';"
-if errorlevel 1 (
-  echo [ERROR] Failed to download Maven Wrapper jar from "%WRAPPER_URL%"
-  exit /b 1
-)
-
-:run
-set "JAVA_EXE=java"
-if defined JAVA_HOME set "JAVA_EXE=%JAVA_HOME%\bin\java.exe"
-
-"%JAVA_EXE%" -classpath "%WRAPPER_JAR%" "-Dmaven.multiModuleProjectDirectory=%BASEDIR%" org.apache.maven.wrapper.MavenWrapperMain %*
-endlocal

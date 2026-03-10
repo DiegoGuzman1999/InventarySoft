@@ -28,12 +28,14 @@ services:
     container_name: pgadmin-inventory
     restart: unless-stopped
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@inventarysoft.local
+      PGADMIN_DEFAULT_EMAIL: admin@inventarysoft.com
       PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_REPLACE_SERVERS_ON_STARTUP: "True"
     ports:
       - "5050:80"
     volumes:
       - pgadmin_data_inventarysoft:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
     depends_on:
       db-inventory:
         condition: service_healthy

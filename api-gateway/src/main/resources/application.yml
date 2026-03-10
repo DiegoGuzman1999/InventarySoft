@@ -6,23 +6,8 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      globalcors:
-        add-to-simple-url-handler-mapping: true
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - PATCH
-              - DELETE
-              - OPTIONS
-            allowedHeaders: "*"
-            allowCredentials: false
-            maxAge: 3600
       routes:
-        - id: inventory-route
+        - id: inventory-products
           uri: http://localhost:8081
           predicates:
-            - Path=/api/v1/inventory/**
+            - Path=/api/products/**
