@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS productos (
+    id BIGSERIAL PRIMARY KEY,  -- <--- CAMBIA 'SERIAL' POR 'BIGSERIAL'
+    codigo VARCHAR(50) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10,2) NOT NULL,
+    stock_actual INTEGER NOT NULL DEFAULT 0,
+    stock_minimo INTEGER NOT NULL DEFAULT 0,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
