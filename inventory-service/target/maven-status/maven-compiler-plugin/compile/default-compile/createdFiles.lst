@@ -1,0 +1,13 @@
+com\inventarysoft\inventoryservice\common\web\ApiError.class
+com\inventarysoft\inventoryservice\InventoryServiceApplication.class
+com\inventarysoft\inventoryservice\product\entity\Producto$ProductoBuilder.class
+com\inventarysoft\inventoryservice\common\web\GlobalExceptionHandler.class
+com\inventarysoft\inventoryservice\product\dto\ProductoDTO.class
+com\inventarysoft\inventoryservice\product\controller\ProductoController.class
+com\inventarysoft\inventoryservice\common\exception\BadRequestException.class
+com\inventarysoft\inventoryservice\product\service\ProductoService.class
+com\inventarysoft\inventoryservice\product\repository\ProductoRepository.class
+com\inventarysoft\inventoryservice\common\web\ApiError$ApiErrorBuilder.class
+com\inventarysoft\inventoryservice\product\entity\Producto.class
+com\inventarysoft\inventoryservice\common\exception\NotFoundException.class
+com\inventarysoft\inventoryservice\product\dto\ProductoDTO$ProductoDTOBuilder.class

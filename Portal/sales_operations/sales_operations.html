@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Operations – Administrative System</title>
+  <link rel="stylesheet" href="../asset/css/estilos.css">
+</head>
+
+<body>
+<header>
+  <h1>Sales Operations</h1>
+</header>
+
+<nav>
+  <a href="../index.html" class="nav-link">Home</a>
+  <a href="../system_parameterization/system_parameterization.html" class="nav-link">System Parameterization</a>
+  <a href="../security_management/security_management.html" class="nav-link">Security Management</a>
+  <a href="../human_resources/human_resources.html" class="nav-link">Human Resources</a>
+  <a href="../product_inventory_management/product_inventory_management.html" class="nav-link">Product & Inventory Management</a>
+  <a href="sales_operations.html" class="nav-link active">Sales Operations</a>
+  <a href="../customer_services/customer_services.html" class="nav-link">Customer & Services</a>
+  <a href="../notifications/notifications.html" class="nav-link">Notifications</a>
+</nav>
+
+<main>
+  <div class="card">
+    <p>
+      Manages sales transactions, including order registration, payment processing,
+      and inventory updates associated with each sale.
+    </p>
+
+    <h2>Entities</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Entity</th>
+          <th>Attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>sale</strong></td>
+          <td>id, sale_date, total_amount, payment_method_id, customer_id, user_id</td>
+        </tr>
+        <tr>
+          <td><strong>sale_detail</strong></td>
+          <td>id, sale_id, product_id, quantity, unit_price</td>
+        </tr>
+        <tr>
+          <td><strong>invoice</strong></td>
+          <td>id, invoice_number, sale_id, issue_date, total_amount</td>
+        </tr>
+        <tr>
+          <td><strong>payment</strong></td>
+          <td>id, sale_id, payment_method_id, amount, payment_date</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>

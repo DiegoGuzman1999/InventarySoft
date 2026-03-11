@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "InventarySoft DB",
+      "Group": "Servers",
+      "Host": "db-inventory",
+      "Port": 5432,
+      "MaintenanceDB": "inventarysoft_db",
+      "Username": "admin",
+      "SSLMode": "prefer"
+    }
+  }
+}
