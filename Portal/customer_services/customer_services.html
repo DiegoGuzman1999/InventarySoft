@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers & Services – Administrative Control System</title>
+  <link rel="stylesheet" href="../asset/css/estilos.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Customers & Services</h1>
+</header>
+
+<nav>
+  <a href="../index.html" class="nav-link">Home</a>
+  <a href="../system_parameterization/system_parameterization.html" class="nav-link">System Parameterization</a>
+  <a href="../security_management/security_management.html" class="nav-link">Security Management</a>
+  <a href="../human_resources/human_resources.html" class="nav-link"> Human Resources</a>
+  <a href="../product_inventory_management/product_inventory_management.html" class="nav-link"> Product & Inventory Management</a>
+  <a href="../sales_operations/sales_operations.html" class="nav-link">Sales Operations</a>
+  <a href="customer_services.html" class="nav-link active">Customers & Services</a>
+  <a href="../notifications/notifications.html" class="nav-link"> Notifications</a>
+</nav>
+
+<main>
+  <div class="card">
+    <p>
+      Manages customer records, commercial services, and customer–service
+      relationships within the administrative sales and inventory control system.
+    </p>
+
+    <h2>Entities</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Entity</th>
+          <th>Attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>customer</strong></td>
+          <td>
+            id, customer_code, person_id, email, phone, status, created_at
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>service</strong></td>
+          <td>
+            id, code, name, description, price, status
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>customer_service</strong></td>
+          <td>
+            id, customer_id, service_id, start_date, end_date, status
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>

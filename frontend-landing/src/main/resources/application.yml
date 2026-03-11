@@ -1,0 +1,12 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: frontend-landing
+  thymeleaf:
+    cache: false
+
+# Arquitectura: Frontend → API Gateway (8082) → Inventory Service (8081)
+app:
+  inventory-api-url: http://localhost:8082/api/products

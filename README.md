@@ -37,6 +37,34 @@ Acceso al tablero oficial del proyecto:
 
 
 ---
+## Arquitectura de microservicios (flujo de peticiones)
+
+```
+Frontend (8084)  →  API Gateway (8082)  →  Inventory Service (8081)  →  PostgreSQL (5432)
+     │                      │                         │
+     │  /api/products       │  /api/products/**       │  /api/products
+     └─────────────────────┴─────────────────────────┴──────────────────
+```
+
+- **Frontend** solo conoce la URL del Gateway (`http://localhost:8082/api/products`).
+- **Gateway** enruta `/api/products/**` al inventory-service en 8081.
+- **Inventory-service** expone la API REST y usa PostgreSQL (puerto 5432; pgAdmin en 5050 si usas Docker).
+
+---
+## Cómo levantar los servicios (monorepo)
+
+Desde la raíz `InventarySoft`:
+
+| Servicio           | Puerto | Comando (desde la carpeta indicada) |
+|--------------------|--------|-------------------------------------|
+| PostgreSQL (Docker)| 5432   | `docker compose up -d` (opcional: perfil `dev` en inventory usa H2) |
+| inventory-service  | 8081   | `InventarySoft\inventory-service` → `.\mvnw.cmd clean spring-boot:run` |
+| api-gateway        | 8082   | `InventarySoft\api-gateway` → `.\mvnw.cmd clean spring-boot:run` |
+| frontend-landing   | 8084   | `InventarySoft\frontend-landing` → `.\mvnw.cmd clean spring-boot:run` |
+
+**Orden:** 1) Base de datos (o perfil `dev`), 2) inventory-service, 3) api-gateway, 4) frontend-landing.
+
+---
 ## 📌 Notas
 
 Este repositorio actúa como punto central de documentación, organización y referencia para todos los componentes del sistema InventorySoft.
