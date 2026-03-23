@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retrospectiva — InventarySoft</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Retrospectiva del Proyecto InventarySoft</h1>
+    <p class="subtitle">Sistema Web de Control Administrativo, Ventas e Inventario · Fase 2</p>
+    <p class="date">Presentación Weekly 7 — Fase 2: implementación HU 12, HU 13, HU 14</p>
+  </header>
+
+  <main class="container">
+    <!-- Resumen Weekly -->
+    <section class="section">
+      <span class="weekly-badge">Weekly 7</span>
+      <h2><span class="icon">📋</span> Resumen de la semana</h2>
+      <p>Estamos en la <strong>Fase 2</strong> del proyecto. Esta semana presentamos la retrospectiva y el avance en las historias de usuario correspondientes a esta fase: <strong>HU 12</strong>, <strong>HU 13</strong> y <strong>HU 14</strong>, que estamos implementando en InventarySoft.</p>
+
+      <h3>¿Qué se hizo?</h3>
+      <ul class="card-list">
+        <li class="card-item success">Avance en la implementación de HU 12, HU 13 y HU 14 (Fase 2).</li>
+        <li class="card-item success">Elaboración y presentación de la retrospectiva del proyecto.</li>
+        <li class="card-item success">Revisión del avance del backlog y planificación de la weekly.</li>
+      </ul>
+
+      <h3>¿Qué no se hizo?</h3>
+      <ul class="card-list">
+        <li class="card-item warning">Cierre completo de las tres historias HU 12, HU 13 y HU 14 (quedan pendientes criterios de aceptación o pruebas).</li>
+        <li class="card-item warning">[Completar según lo pendiente de la semana — ej. documentación de APIs, pruebas E2E, etc.]</li>
+      </ul>
+
+      <h3>¿Qué se va a realizar?</h3>
+      <ul class="card-list">
+        <li class="card-item">Completar la implementación y validación de HU 12, HU 13 y HU 14.</li>
+        <li class="card-item">Cumplir criterios de aceptación, pruebas y documentación de Fase 2.</li>
+        <li class="card-item">Preparar el avance hacia las siguientes historias del backlog.</li>
+      </ul>
+
+      <h3>Historias de usuario en curso (Fase 2)</h3>
+      <div class="hu-grid">
+        <div class="hu-card focus">
+          <span class="hu-num">HU 12</span>
+          <div class="hu-title">HU 12</div>
+          <small>En desarrollo</small>
+        </div>
+        <div class="hu-card focus">
+          <span class="hu-num">HU 13</span>
+          <div class="hu-title">HU 13</div>
+          <small>En desarrollo</small>
+        </div>
+        <div class="hu-card focus">
+          <span class="hu-num">HU 14</span>
+          <div class="hu-title">HU 14</div>
+          <small>En desarrollo</small>
+        </div>
+      </div>
+      <p style="margin-top: 1rem;">En Fase 2 el foco está en la implementación de las historias de usuario HU 12, HU 13 y HU 14, que amplían la funcionalidad del sistema según el backlog y la planificación del proyecto.</p>
+    </section>
+
+    <!-- Qué salió bien -->
+    <section class="section">
+      <h2><span class="icon">✅</span> Qué salió bien</h2>
+      <ul class="card-list">
+        <li class="card-item success">
+          <strong>Arquitectura y organización:</strong> Monorepo bien estructurado con carpetas por módulo (inventory-service, api-gateway, frontend-landing, Portal, database, Docs). Separación clara de responsabilidades.
+        </li>
+        <li class="card-item success">
+          <strong>API Gateway:</strong> Configuración correcta con Spring Cloud Gateway; enrutamiento de <code>/api/products/**</code> al inventory-service. El frontend consume todo a través del Gateway (puerto 8082).
+        </li>
+        <li class="card-item success">
+          <strong>CRUD de productos:</strong> Implementación completa en el backend (Controller, Service, Repository, DTOs, entidades JPA). Endpoints accesibles vía Gateway.
+        </li>
+        <li class="card-item success">
+          <strong>Documentación:</strong> README claro con objetivo, arquitectura, tabla de servicios y puertos, orden de arranque. Carpeta Docs con architecture.md, Diagrama_del_Sistema.md, estimación MoSCoW y rúbrica de evaluación.
+        </li>
+        <li class="card-item success">
+          <strong>Metodología y priorización:</strong> Uso de Scrum (Jira), técnica MoSCoW aplicada al backlog y requisitos Must/Should/Could/Won't bien definidos para el MVP.
+        </li>
+        <li class="card-item success">
+          <strong>Infraestructura:</strong> Docker Compose con PostgreSQL y pgAdmin; persistencia con JPA y entidades mapeadas. Flujo Frontend → Gateway → Inventory Service → Base de datos documentado y probado.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Dificultades y soluciones -->
+    <section class="section">
+      <h2><span class="icon">🔧</span> Dificultades y qué se solucionó</h2>
+      <ul class="card-list">
+        <li class="card-item warning">
+          <strong>Enrutamiento desde el Gateway:</strong> Asegurar que las peticiones llegaran correctamente al backend. <em>Solución:</em> Definir rutas en <code>application.yml</code> del api-gateway con predicado <code>Path=/api/products/**</code> y URI del inventory-service (8081).
+        </li>
+        <li class="card-item warning">
+          <strong>Consistencia de capas y DTOs:</strong> Mantener separación entre entidades de dominio, DTOs de API (request/response) y capas Controller/Service/Repository. <em>Solución:</em> Estructura de paquetes clara y uso de DTOs (ProductResponse, ProductCreateRequest, ProductUpdateRequest) en los endpoints.
+        </li>
+        <li class="card-item warning">
+          <strong>Manejo de errores en la API:</strong> Respuestas coherentes ante errores (404, 400, etc.). <em>Solución:</em> GlobalExceptionHandler y clases de excepción (NotFoundException, BadRequestException, ConflictException) con formato de error estandarizado (ApiError, ErrorResponse).
+        </li>
+        <li class="card-item warning">
+          <strong>Orden de arranque de servicios:</strong> La base de datos, el inventory-service, el gateway y el frontend deben levantarse en un orden determinado. <em>Solución:</em> Documentación en README con tabla de puertos y comandos por carpeta (Docker, luego inventory-service, api-gateway, frontend-landing).
+        </li>
+        <li class="card-item warning">
+          <strong>Alcance y priorización:</strong> Definir qué implementar primero en un contexto académico con tiempo limitado. <em>Solución:</em> Documento MoSCoW con Must Have (gestión productos, ventas, inventario, clientes, proveedores, reportes básicos) y planificación por fases; en Fase 2 nos enfocamos en la implementación de HU 12, HU 13 y HU 14.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Aprendizajes -->
+    <section class="section">
+      <h2><span class="icon">📚</span> Qué nos quedó de aprendizaje</h2>
+      <ul class="card-list">
+        <li class="card-item">
+          <strong>Arquitectura de microservicios:</strong> Ventajas de tener un API Gateway como único punto de entrada: simplifica el cliente, permite cambiar URLs internas y escalar servicios por separado.
+        </li>
+        <li class="card-item">
+          <strong>REST y capas:</strong> La separación Controller → Service → Repository y el uso de DTOs mejoran la mantenibilidad y la claridad del contrato de la API.
+        </li>
+        <li class="card-item">
+          <strong>Scrum y MoSCoW:</strong> Priorizar con Must/Should/Could/Won't y trabajar por historias de usuario (HU) ayuda a enfocar el esfuerzo y a presentar avances claros en la weekly.
+        </li>
+        <li class="card-item">
+          <strong>Documentación desde el inicio:</strong> Tener README, arquitectura y diagramas actualizados facilita la onboarding, la presentación y la evaluación del proyecto.
+        </li>
+        <li class="card-item">
+          <strong>Trabajo por fases e HUs:</strong> Organizar el desarrollo en fases (Fase 2: HU 12, HU 13, HU 14) permite entregar valor de forma incremental y mantener el backlog alineado con los objetivos del sprint.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Próximos pasos -->
+    <section class="section">
+      <h2><span class="icon">🎯</span> Próximos pasos</h2>
+      <p>Continuar con la implementación y cierre de las historias de usuario de la <strong>Fase 2 (HU 12, HU 13, HU 14)</strong>: completar criterios de aceptación, pruebas y documentación, y preparar el avance hacia las siguientes historias del backlog.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    InventarySoft — Retrospectiva del proyecto · Documento de consulta para la presentación weekly
+  </footer>
+</body>
+</html>
