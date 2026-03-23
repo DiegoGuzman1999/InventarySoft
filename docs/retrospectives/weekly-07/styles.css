@@ -1,0 +1,196 @@
+/* ============================================
+   InventarySoft - Retrospectiva del Proyecto
+   Estilos para presentación Weekly
+   ============================================ */
+
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --accent: #38bdf8;
+  --accent-soft: #0ea5e9;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-dark);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Header */
+.hero {
+  background: linear-gradient(135deg, var(--bg-card) 0%, #0f172a 100%);
+  border-bottom: 2px solid var(--accent);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.hero .date {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Secciones */
+.section {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section h2 .icon {
+  font-size: 1.2rem;
+}
+
+.section h3 {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 1rem 0 0.5rem;
+}
+
+.section ul, .section ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.section li {
+  margin-bottom: 0.35rem;
+}
+
+.section p {
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+
+.section code {
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--accent);
+}
+
+.section-intro {
+  margin-bottom: 1rem !important;
+  color: var(--text) !important;
+  font-size: 0.95rem;
+}
+
+.section-highlight {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.06) 0%, var(--bg-card) 100%);
+}
+
+/* Tarjetas de ítems */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-item {
+  background: rgba(15, 23, 42, 0.6);
+  border-left: 4px solid var(--accent);
+  padding: 0.75rem 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.card-item.success { border-left-color: var(--success); }
+.card-item.warning { border-left-color: var(--warning); }
+
+.card-item strong {
+  color: var(--text);
+}
+
+/* Weekly y HU */
+.weekly-badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--bg-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.hu-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.hu-card .hu-num { font-size: 0.75rem; color: var(--text-muted); }
+.hu-card .hu-title { font-weight: 600; color: var(--accent); margin-top: 0.25rem; }
+.hu-card.focus { border-color: var(--accent); background: rgba(56, 189, 248, 0.08); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .section { padding: 1.75rem; }
+}
