@@ -2,70 +2,85 @@
 
 InventarySoft es una plataforma de software web orientada a la gestión integral de procesos administrativos, ventas e inventarios para organizaciones comerciales.
 
-El proyecto se desarrolla bajo metodología ágil **Scrum**, con una arquitectura modular basada en repositorios independientes.
+El proyecto se desarrolla bajo metodología ágil **Scrum**, con arquitectura modular basada en **microservicios** y repositorios independientes.
 
 ---
 
 ## 🎯 Objetivo del Proyecto
 
 Diseñar e implementar una solución web escalable que permita:
+
 - Gestión de inventarios
 - Control de ventas
 - Administración de procesos internos
-- Separación clara entre frontend, backend y base de datos
+- Separación clara entre frontend, backends y base de datos
 
 ---
 
-## 🧱 Arquitectura del Proyecto
+## 🧩 Componentes, tecnología y puertos por entorno
 
-El sistema está organizado en múltiples repositorios, cada uno con una responsabilidad específica:
+Cada servicio expone su API en un puerto distinto según el **entorno** (para evitar conflictos al levantar varios a la vez en la misma máquina).
+
+| Componente | Rol | Tecnología | **Main** | **QA** | **Dev** |
+|------------|-----|------------|:--------:|:------:|:-------:|
+| **Micro-1** | Backend (Carrito) | Java / Spring Boot | `8080` | `8081` | `8082` |
+| **Micro-2** | Backend (Users) | Node.js / Express | `9000` | `9001` | `9002` |
+| **Micro-3** | Backend (Products) | Python / FastAPI | `8000` | `8001` | `8002` |
+| **Base de datos** | Persistencia | PostgreSQL | `5432` | `5433` | `5434` |
+| **Front-end** | Interfaz web | React / Tailwind | `8081` | `8082` | *(definir)* |
+
+> **Nota:** Los puertos del front-end pueden alinearse con la convención del equipo (por ejemplo `3000` / `3001` / `3002` si usan Vite o Create React App). Ajusta la última columna cuando la tengan cerrada.
+
+### Cómo leer esta tabla
+
+- **Main:** entorno de integración o “producción” de pruebas.
+- **QA:** entorno donde QA valida antes de subir a Main.
+- **Dev:** entorno local de desarrollo del equipo.
+
+Ejemplo de URL local en Dev para el carrito: `http://localhost:8082` (Micro-1 Dev).
+
+---
+
+## 🧱 Repositorios del ecosistema
 
 | Módulo | Descripción | Enlace |
-|------|------------|-------|
-| Portal Web | Interfaz principal del sistema | https://github.com/DiegoGuzman1999/InventarySoft-portal |
-| Aplicación Cliente | Aplicación frontend del sistema | https://github.com/DiegoGuzman1999/InventarySoft-App |
-| API Backend | Servicios y lógica de negocio | https://github.com/DiegoGuzman1999/InventarySoft-Api |
-| Repositorio Principal | Gestión del proyecto y documentación | https://github.com/DiegoGuzman1999/InventarySoft |
+|--------|-------------|--------|
+| Portal Web | Interfaz principal del sistema | [InventarySoft-portal](https://github.com/DiegoGuzman1999/InventarySoft-portal) |
+| Aplicación Cliente | Frontend del sistema | [InventarySoft-App](https://github.com/DiegoGuzman1999/InventarySoft-App) |
+| API Backend | Servicios y lógica de negocio | [InventarySoft-Api](https://github.com/DiegoGuzman1999/InventarySoft-Api) |
+| Repositorio principal | Documentación y coordinación | [InventarySoft](https://github.com/DiegoGuzman1999/InventarySoft) |
 
 ---
-## Gestión Ágil del Proyecto
 
-El seguimiento de actividades, planificación de Sprints y control del backlog se realiza mediante la herramienta Jira.
+## Gestión ágil del proyecto
 
-Acceso al tablero oficial del proyecto:
+El seguimiento de actividades, planificación de sprints y backlog se realiza en **Jira**:
+
 [InventarySoft – SCRUM Board](https://inventarysoft.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
 
-
 ---
-## Arquitectura de microservicios (flujo de peticiones)
+
+## Flujo lógico (alto nivel)
 
 ```
-Frontend (8084)  →  API Gateway (8082)  →  Inventory Service (8081)  →  PostgreSQL (5432)
-     │                      │                         │
-     │  /api/products       │  /api/products/**       │  /api/products
-     └─────────────────────┴─────────────────────────┴──────────────────
+Front-end (React)  →  API Gateway / BFF (opcional)  →  Microservicios (Carrito, Users, Products)  →  PostgreSQL
 ```
 
-- **Frontend** solo conoce la URL del Gateway (`http://localhost:8082/api/products`).
-- **Gateway** enruta `/api/products/**` al inventory-service en 8081.
-- **Inventory-service** expone la API REST y usa PostgreSQL (puerto 5432; pgAdmin en 5050 si usas Docker).
+Cada microservicio se despliega de forma independiente; los puertos concretos por entorno están en la tabla superior.
 
 ---
-## Cómo levantar los servicios (monorepo)
 
-Desde la raíz `InventarySoft`:
+## 📚 Documentación en este repositorio
 
-| Servicio           | Puerto | Comando (desde la carpeta indicada) |
-|--------------------|--------|-------------------------------------|
-| PostgreSQL (Docker)| 5432   | `docker compose up -d` (opcional: perfil `dev` en inventory usa H2) |
-| inventory-service  | 8081   | `InventarySoft\inventory-service` → `.\mvnw.cmd clean spring-boot:run` |
-| api-gateway        | 8082   | `InventarySoft\api-gateway` → `.\mvnw.cmd clean spring-boot:run` |
-| frontend-landing   | 8084   | `InventarySoft\frontend-landing` → `.\mvnw.cmd clean spring-boot:run` |
+En la carpeta **`Docs/`** encontrarás (entre otros):
 
-**Orden:** 1) Base de datos (o perfil `dev`), 2) inventory-service, 3) api-gateway, 4) frontend-landing.
+- Arquitectura y diagramas (`Docs/explanation/`)
+- Rúbricas y referencia (`Docs/reference/`)
+- Prototipo del portal (`Docs/portal-prototype/`)
+- Retrospectivas (`Docs/retrospectives/`)
 
 ---
+
 ## 📌 Notas
 
-Este repositorio actúa como punto central de documentación, organización y referencia para todos los componentes del sistema InventorySoft.
-
+Este repositorio es el **punto central de documentación** y referencia del ecosistema InventarySoft. El código de cada microservicio vive en sus repositorios correspondientes; aquí se describe la visión global, componentes y convenciones.
