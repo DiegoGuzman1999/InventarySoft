@@ -138,9 +138,14 @@ En la carpeta `Docs/` se encuentra, entre otros, el siguiente contenido:
 - `Docs/portal-prototype/` → prototipo del portal
 - `Docs/retrospectives/` → retrospectivas y evidencias de sprint
 
+---
 
-## 📌 Notas
-Este repositorio es el punto central de documentación y referencia del ecosistema InventarySoft. El código de cada microservicio vive en sus repositorios correspondientes; aquí se describe la visión global, componentes y convenciones del sistema.
+## Gestión ágil del proyecto
+
+El seguimiento de actividades, planificación de sprints y backlog se realiza en **Jira**:
+
+[InventarySoft – SCRUM Board](https://inventarysoft.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+
 
 ## 📌 Notas
 Este repositorio es el punto central de documentación y referencia del ecosistema InventarySoft. El código de cada microservicio vive en sus repositorios correspondientes; aquí se describe la visión global, componentes y convenciones del sistema.
