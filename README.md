@@ -1,3 +1,14 @@
+<!--
+CONFIG
+FULL_NAME: Diego Armando Penagos Guzman
+GITHUB_USER: DiegoGuzman
+EMAIL: diegopenagos984@gmail.com
+CODE_ORGANIZATION: code-corhuila 
+-->
+
+
+
+
 # 📦 InventarySoft
 
 ## 🚀 Introducción
